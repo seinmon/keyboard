@@ -25,9 +25,9 @@ enum charybdis_keymap_layers {
     LAYER_POINTER,
     LAYER_NAVIGATION,
     LAYER_MEDIA,
-    LAYER_FUNCTION,
-    LAYER_NUMERAL,
     LAYER_SYMBOLS,
+    LAYER_NUMERAL,
+    LAYER_FUNCTION,
 };
 
 // Automatically enable sniping-mode on the pointer layer.
@@ -48,9 +48,9 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
 #define ENT_NAV LT(LAYER_NAVIGATION, KC_ENT)
 #define TAB_MED LT(LAYER_MEDIA, KC_TAB)
-#define ESC_FUN LT(LAYER_FUNCTION, KC_ESC)
-#define SPC_NUM LT(LAYER_NUMERAL, KC_SPC)
 #define BSP_SYM LT(LAYER_SYMBOLS, KC_BSPC)
+#define SPC_NUM LT(LAYER_NUMERAL, KC_SPC)
+#define ESC_FUN LT(LAYER_FUNCTION, KC_ESC)
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
@@ -65,14 +65,12 @@ static uint16_t auto_pointer_layer_timer = 0;
        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, \
        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
-                      BSP_SYM, SPC_NUM, ESC_FUN, TAB_MED, ENT_NAV
+                      ESC_FUN, SPC_NUM, BSP_SYM, TAB_MED, ENT_NAV
 
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define ______________HOME_ROW_CAG_L______________ XXXXXXX, KC_LALT, KC_LCTL, KC_LGUI, XXXXXXX
-#define ______________HOME_ROW_CAG_R______________ XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX
-#define _________________ROW_S_L_________________ KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define _________________ROW_S_R_________________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT
+#define ______________HOME_ROW_SCAG_L______________ KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX
+#define ______________HOME_ROW_SCAG_R______________ XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT
 
 /*
  * Layers used on the Charybdis Nano.
@@ -96,7 +94,7 @@ static uint16_t auto_pointer_layer_timer = 0;
     _______________DEAD_HALF_ROW_______________, _______________DEAD_HALF_ROW_______________,  \
     KC_F1,   KC_F2,   KC_F3,    KC_F4,    KC_F5, KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  \
     XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, KC_F11, KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, \
-                        XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX
+                        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 
 /**
  * \brief Media layer.
@@ -113,8 +111,8 @@ static uint16_t auto_pointer_layer_timer = 0;
 /** \brief Mouse emulation and pointer functions. */
 #define LAYOUT_LAYER_POINTER                                                                     \
     DPI_MOD, S_D_MOD, XXXXXXX, QK_BOOT, XXXXXXX,   XXXXXXX, QK_BOOT, XXXXXXX, S_D_MOD, DPI_MOD, \
-    ______________HOME_ROW_CAG_L______________,    ______________HOME_ROW_CAG_R______________,   \
-    KC_LSFT, SNIPING, DRGSCRL, _______, KC_BTN2,   KC_BTN3, _______, DRGSCRL, SNIPING, KC_RSFT,  \
+    ______________HOME_ROW_SCAG_L______________,    ______________HOME_ROW_SCAG_R______________,   \
+    XXXXXXX, SNIPING, DRGSCRL, _______, KC_BTN2,   KC_BTN3, _______, DRGSCRL, SNIPING, XXXXXXX,  \
                       KC_BTN4, KC_BTN1, KC_BTN5,   KC_BTN1, KC_BTN2
 
 /**
@@ -125,10 +123,10 @@ static uint16_t auto_pointer_layer_timer = 0;
  * caps lock and insert on the inner column. Thumb keys are duplicated from the
  * base layer to avoid having to layer change mid edit and to enable auto-repeat.
  */
-#define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______________DEAD_HALF_ROW_______________, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, \
-    ______________HOME_ROW_CAG_L______________,  KC_LEFT, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, \
-    _________________ROW_S_L_________________,   KC_UP,   KC_HOME, KC_PGDN, KC_PGUP,  KC_END, \
+#define LAYOUT_LAYER_NAVIGATION                                                                 \
+    _______________DEAD_HALF_ROW_______________,   KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, \
+    ______________HOME_ROW_SCAG_L______________,   KC_LEFT, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, \
+    _______________DEAD_HALF_ROW_______________,   KC_UP,   KC_HOME, KC_PGDN, KC_PGUP,  KC_END, \
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______
 
 /**
@@ -138,10 +136,10 @@ static uint16_t auto_pointer_layer_timer = 0;
  * are in the standard numpad locations with symbols in the remaining positions.
  * `KC_DOT` is duplicated from the base layer.
  */
-#define LAYOUT_LAYER_NUMERAL                                                                \
-     _______________DEAD_HALF_ROW_______________, KC_LPRN, KC_7,    KC_8,    KC_9, KC_RPRN, \
-     ______________HOME_ROW_CAG_L______________,  KC_LBRC, KC_4,    KC_5,    KC_6, KC_RBRC, \
-     _________________ROW_S_L_________________,   KC_MINS, KC_1,    KC_2,    KC_3, KC_EQL,  \
+#define LAYOUT_LAYER_NUMERAL                                                                       \
+     _______________DEAD_HALF_ROW_______________,    KC_LPRN,  KC_7,    KC_8,    KC_9,   KC_RPRN,  \
+     ______________HOME_ROW_SCAG_L______________,    KC_LBRC,  KC_4,    KC_5,    KC_6,   KC_RBRC,  \
+     _______________DEAD_HALF_ROW_______________,    KC_MINS,  KC_1,    KC_2,    KC_3,   KC_EQL,   \
                        XXXXXXX, _______, XXXXXXX, KC_DOT, KC_0
 
 /**
@@ -151,11 +149,11 @@ static uint16_t auto_pointer_layer_timer = 0;
  * chording when using mods with shifted symbols. `KC_LPRN` is duplicated next to
  * `KC_RPRN`.
  */
-#define LAYOUT_LAYER_SYMBOLS                                                                   \
-     _______________DEAD_HALF_ROW_______________, KC_QUOT, KC_AMPR, KC_ASTR, KC_UNDS, KC_PLUS, \
-     ______________HOME_ROW_CAG_L______________,  KC_LCBR, KC_DLR,  KC_PERC, KC_CIRC, KC_RCBR, \
-     _________________ROW_S_R_________________,   KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_BSLS, \
-                      _______, XXXXXXX,  XXXXXXX, KC_LPRN, KC_RPRN
+#define LAYOUT_LAYER_SYMBOLS                                                                     \
+     _______________DEAD_HALF_ROW_______________,   KC_QUOT, KC_AMPR, KC_ASTR, KC_UNDS, KC_PLUS, \
+     ______________HOME_ROW_SCAG_L______________,   KC_LCBR, KC_DLR,  KC_PERC, KC_CIRC, KC_RCBR, \
+     _______________DEAD_HALF_ROW_______________,   KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_BSLS, \
+                      XXXXXXX, XXXXXXX,  _______, KC_LPRN, KC_RPRN
 
 /**
  * \brief Add Home Row mod to a layout.
@@ -167,17 +165,17 @@ static uint16_t auto_pointer_layer_timer = 0;
  *
  *     MOD_SCAG(LAYER_ALPHAS_QWERTY)
  */
-#define _MOD_SCAG(                                                      \
-    L00, L01, L02, L03, L04, R05, R06, R07, R08, R09,                   \
-    L10, L11, L12, L13, L14, R15, R16, R17, R18, R19,                   \
-    L20, L21, L22, L23, L24, R25, R26, R27, R28, R29,                   \
-    ...)                                                                \
-             L00,         L01,         L02,          L03,         L04,  \
-             R05,         R06,         R07,          R08,         R09,  \
-             L10, LCTL_T(L11), LALT_T(L12),  LGUI_T(L13),         L14,  \
-             R15,  RGUI_T(R16), RALT_T(R17), LCTL_T(R18),         R19,  \
-     LSFT_T(L20),         L21,         L22,          L23,         L24,  \
-             R25,         R26,         R27,          R28, RSFT_T(R29),  \
+#define _MOD_SCAG(                                                              \
+    L00, L01, L02, L03, L04, R05, R06, R07, R08, R09,                           \
+    L10, L11, L12, L13, L14, R15, R16, R17, R18, R19,                           \
+    L20, L21, L22, L23, L24, R25, R26, R27, R28, R29,                           \
+    ...)                                                                        \
+             L00,         L01,         L02,          L03,         L04,          \
+             R05,         R06,         R07,          R08,         R09,          \
+             LSFT_T(L10), LCTL_T(L11), LALT_T(L12),  LGUI_T(L13), L14,          \
+             R15,  RGUI_T(R16), RALT_T(R17), LCTL_T(R18),         RSFT_T(R19),  \
+             L20,         L21,         L22,          L23,         L24,          \
+             R25,         R26,         R27,          R28,         R29,          \
       __VA_ARGS__
 
 #define MOD_SCAG(...) _MOD_SCAG(__VA_ARGS__)
