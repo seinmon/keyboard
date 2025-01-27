@@ -84,29 +84,29 @@ static uint16_t auto_pointer_layer_timer = 0;
     _______________DEAD_HALF_ROW_______________, XXXXXXX,  KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,  \
                       KC_MPRV, KC_MPLY, KC_MNXT, _______, XXXXXXX
 
-#define LAYOUT_LAYER_POINTER                                                                     \
-    DPI_MOD, S_D_MOD, XXXXXXX, QK_BOOT, EE_CLR,    EE_CLR, QK_BOOT, XXXXXXX, S_D_MOD, DPI_MOD, \
-    ______________HOME_ROW_SCAG_L______________,    ______________HOME_ROW_SCAG_R______________,   \
-    XXXXXXX, SNIPING, DRGSCRL, _______, KC_BTN2,   KC_BTN3, _______, DRGSCRL, SNIPING, XXXXXXX,  \
+#define LAYOUT_LAYER_POINTER                                                                    \
+    DPI_MOD, S_D_MOD, XXXXXXX, QK_BOOT, EE_CLR,    EE_CLR, QK_BOOT, XXXXXXX, S_D_MOD, DPI_MOD,  \
+    ______________HOME_ROW_SCAG_L______________,   ______________HOME_ROW_SCAG_R______________, \
+    XXXXXXX, SNIPING, DRGSCRL, _______, KC_BTN2,   KC_BTN3, _______, DRGSCRL, SNIPING, XXXXXXX, \
                       KC_BTN4, KC_BTN1, KC_BTN5,   KC_BTN1, KC_BTN2
 
-#define LAYOUT_LAYER_NAVIGATION                                                                 \
-    _______________DEAD_HALF_ROW_______________,   KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, \
-    ______________HOME_ROW_SCAG_L______________,   KC_LEFT, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, \
-    _______________DEAD_HALF_ROW_______________,   KC_UP,   KC_HOME, KC_PGDN, KC_PGUP,  KC_END, \
+#define LAYOUT_LAYER_NAVIGATION                                                                          \
+    C(KC_LEFT), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   KC_DOWN, KC_RGHT, XXXXXXX,    XXXXXXX, C(KC_RGHT), \
+    ______________HOME_ROW_SCAG_L______________,      KC_LEFT, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX,    \
+    XXXXXXX, XXXXXXX, A(KC_LEFT), XXXXXXX, XXXXXXX,   KC_UP,   XXXXXXX, A(KC_RGHT), XXXXXXX, XXXXXXX,    \
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______
 
-#define LAYOUT_LAYER_SYMBOLS                                                                     \
-     XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT, KC_DQT,    KC_LCBR, KC_AMPR, KC_ASTR, KC_UNDS, KC_RCBR, \
+#define LAYOUT_LAYER_SYMBOLS                                                                          \
+     XXXXXXX, XXXXXXX, KC_GRV, KC_QUOT, KC_DQT,          KC_LCBR, KC_AMPR, KC_ASTR, KC_UNDS, KC_RCBR, \
      ______________HOME_ROW_SCAG_L______________,        KC_LBRC, KC_DLR,  KC_PERC, KC_CIRC, KC_RBRC, \
-     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LSFT(KC_GRV),   KC_LPRN, KC_EXLM, KC_AT,   KC_HASH, KC_RPRN, \
-                      XXXXXXX, XXXXXXX,  _______, KC_SLSH, KC_BSLS
+     KC_EQL, XXXXXXX, KC_PLUS, KC_MINS, S(KC_GRV),   KC_LPRN, KC_EXLM, KC_AT,   KC_HASH, KC_RPRN, \
+                      XXXXXXX, _______,  XXXXXXX, KC_SLSH, KC_BSLS
 
 #define LAYOUT_LAYER_NUMERAL                                                                       \
-     _______________DEAD_HALF_ROW_______________,    KC_GRV,   KC_7,    KC_8,    KC_9,   KC_MINS,  \
-     ______________HOME_ROW_SCAG_L______________,    KC_QUOT,  KC_4,    KC_5,    KC_6,   KC_PLUS,  \
-     _______________DEAD_HALF_ROW_______________,    KC_SLSH,  KC_1,    KC_2,    KC_3,   KC_EQL,   \
-                       XXXXXXX, _______, XXXXXXX, KC_DOT, KC_0
+     KC_LBRC, KC_LCBR, KC_ASTR, KC_RCBR, KC_RBRC,    KC_GRV,   KC_7,    KC_8,    KC_9,   KC_PLUS,  \
+     ______________HOME_ROW_SCAG_L______________,    KC_QUOT,  KC_4,    KC_5,    KC_6,   KC_MINS,  \
+     KC_LPRN, KC_SLSH, KC_DQT,  KC_BSLS, KC_RPRN,    KC_SLSH,  KC_1,    KC_2,    KC_3,   KC_EQL,   \
+                       XXXXXXX, XXXXXXX, _______, KC_DOT, KC_0
 
 /**
  * \brief Add Home Row mod to a layout.
