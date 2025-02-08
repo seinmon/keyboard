@@ -93,7 +93,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_NAVIGATION                                                                          \
     C(KC_LEFT), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   KC_DOWN, KC_RGHT, XXXXXXX,    XXXXXXX, C(KC_RGHT), \
     ______________HOME_ROW_SCAG_L______________,      KC_LEFT, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX,    \
-    XXXXXXX, XXXXXXX, A(KC_LEFT), XXXXXXX, XXXXXXX,   KC_UP,   XXXXXXX, A(KC_RGHT), XXXXXXX, XXXXXXX,    \
+    A(KC_LEFT), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP,   XXXXXXX, XXXXXXX,    XXXXXXX, A(KC_RGHT), \
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______
 
 #define LAYOUT_LAYER_SYMBOLS                                                                          \
